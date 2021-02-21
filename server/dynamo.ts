@@ -23,7 +23,7 @@ const getItemInput = createGetItemInput();
 
 export async function execute(){
   const data = await executeGetItem(documentClient, getItemInput);
-  return data
+  return data.Item
 }
 
 function createGetItemInput() {
