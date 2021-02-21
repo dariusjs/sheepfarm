@@ -2,6 +2,10 @@ import AWS from 'aws-sdk';
 
 
 let documentClient = new AWS.DynamoDB.DocumentClient( {
+  credentials: {
+    accessKeyId: "1234",
+    secretAccessKey: "1234"
+  },
   region: "eu-west-1",
   endpoint: "http://localhost:8000",
   convertEmptyValues: true
@@ -11,11 +15,16 @@ let documentClient = new AWS.DynamoDB.DocumentClient( {
 const getItemInput = createGetItemInput();
 
 // Call DynamoDB's getItem API
-(async function () {
+// export default (async () => {
+//   const data = await executeGetItem(documentClient, getItemInput);
+//   console.log("hi");
+//   console.log(data);
+// })();
+
+export async function execute(){
   const data = await executeGetItem(documentClient, getItemInput);
-  console.log("hi");
-  console.log(data);
-})
+  return data
+}
 
 function createGetItemInput() {
   return {
@@ -33,7 +42,6 @@ async function executeGetItem(documentClient: AWS.DynamoDB.DocumentClient, getIt
   try {
     const getItemOutput = await documentClient.get(getItemInput).promise();
     console.info('GetItem executed successfully.');
-    console.log(getItemOutput)
     return getItemOutput
   } catch (err) {
     handleGetItemError(err);
