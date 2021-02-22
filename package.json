@@ -12,6 +12,7 @@
     "cross-env": "^7.0.2",
     "next": "latest",
     "react": "^16.13.1",
+    "react-async": "^10.0.1",
     "react-dom": "^16.13.1",
     "react-promise": "^3.0.2",
     "rxjs": "^6.6.3"

@@ -12,7 +12,7 @@ let documentClient = new AWS.DynamoDB.DocumentClient( {
 });
 
 // Create the input for getItem call
-const getItemInput = createGetItemInput();
+// const getItemInput = createGetItemInput();
 
 // Call DynamoDB's getItem API
 // export default (async () => {
@@ -21,29 +21,30 @@ const getItemInput = createGetItemInput();
 //   console.log(data);
 // })();
 
-export async function execute(){
+export async function execute(getItemInput: any){
   const data = await executeGetItem(documentClient, getItemInput);
-  return data.Item
+  return data
 }
 
-function createGetItemInput() {
-  return {
-    "TableName": "sheepfarm",
-    "Key": {
-      "pk": "id#dolly",
-      "sk": "type#sheep"
-    }
-  }
-}
+// function createGetItemInput() {
+//   return {
+//     "TableName": "sheepfarm",
+//     "IndexName": "assets",
+//     "KeyConditionExpression": "#bef90 = :bef90",
+//     "ExpressionAttributeNames": {"#bef90":"sk"},
+//     "ExpressionAttributeValues": {":bef90": "type#sheep"}
+//   }
+// }
 
 // export async function executeGetItem(dynamoDbClient: any, getItemInput: any}) {
 async function executeGetItem(documentClient: AWS.DynamoDB.DocumentClient, getItemInput: any) {
   // Call DynamoDB's getItem API
   try {
-    const getItemOutput = await documentClient.get(getItemInput).promise();
+    const getItemOutput = await documentClient.query(getItemInput).promise();
     console.info('GetItem executed successfully.');
     return getItemOutput
   } catch (err) {
+    console.log(err)
     handleGetItemError(err);
     return err
   }
