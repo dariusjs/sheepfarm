@@ -1,35 +1,35 @@
-import { sheepQuery } from "server/assetsView"
+import { sheepQuery, sheepShearingQuery } from "server/assetsView"
 
-function Sheep({ data }) {
+function Sheep({ sheep, shearing }) {
   return <div>
-    
-      <div class="container mx-auto px-6">
-        <h2 class="text-2xl font-bold mb-2 text-white">
-          List of my Sheep
-        </h2>
-        <h3 class="text-1xl mb-8 text-black-200">
-          <div>{data.Items.map((x) => (
+      <div>
+        <h3>
+          Sheep
+        </h3>
+        <p>
+          <div>{sheep.Items.map((x) => (
           <li>{x.pk} Breed: {x.metadata.breed} LastMilked: {x.attributes.lastMilked || "never"}</li>
         ))}</div>
+        </p>
+      </div>
+      <div>
+        <h3>
+          Shearings
         </h3>
-    
-        <button class="bg-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider">
-          Refresh
-        </button>
+        <p>
+          <div>{shearing.Items.map((x) => (
+          <li>{x.pk} {x.sk} {x.count}</li>
+        ))}</div>
+        </p>
       </div>
   </div>
-
 }
-
-// This gets called on every request
 export async function getServerSideProps() {
-  // Fetch data from external API
-  const data = await sheepQuery()
-  console.log("meow", data)
-  // const data = await res.json()
-
-  // Pass data to the page via props
-  return { props: { data } }
+  const sheep = await sheepQuery()
+  const shearing = await sheepShearingQuery()
+  console.log("cry")
+  console.log("data is:", shearing.Items)
+  return { props: { sheep, shearing } }
 }
 
 export default Sheep
