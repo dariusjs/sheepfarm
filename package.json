@@ -7,6 +7,7 @@
     "start": "cross-env NODE_ENV=production node dist/index.js"
   },
   "dependencies": {
+    "autoprefixer": "^9",
     "aws-sdk": "^2.848.0",
     "axios": "^0.21.1",
     "cross-env": "^7.0.2",

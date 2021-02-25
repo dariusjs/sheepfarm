@@ -11,32 +11,11 @@ let documentClient = new AWS.DynamoDB.DocumentClient( {
   convertEmptyValues: true
 });
 
-// Create the input for getItem call
-// const getItemInput = createGetItemInput();
-
-// Call DynamoDB's getItem API
-// export default (async () => {
-//   const data = await executeGetItem(documentClient, getItemInput);
-//   console.log("hi");
-//   console.log(data);
-// })();
-
 export async function execute(getItemInput: any){
   const data = await executeGetItem(documentClient, getItemInput);
   return data
 }
 
-// function createGetItemInput() {
-//   return {
-//     "TableName": "sheepfarm",
-//     "IndexName": "assets",
-//     "KeyConditionExpression": "#bef90 = :bef90",
-//     "ExpressionAttributeNames": {"#bef90":"sk"},
-//     "ExpressionAttributeValues": {":bef90": "type#sheep"}
-//   }
-// }
-
-// export async function executeGetItem(dynamoDbClient: any, getItemInput: any}) {
 async function executeGetItem(documentClient: AWS.DynamoDB.DocumentClient, getItemInput: any) {
   // Call DynamoDB's getItem API
   try {
@@ -50,8 +29,6 @@ async function executeGetItem(documentClient: AWS.DynamoDB.DocumentClient, getIt
   }
 }
 
-// Handles errors during GetItem execution. Use recommendations in error messages below to 
-// add error handling specific to your application use-case. 
 function handleGetItemError(err: any) {
   if (!err) {
     console.error('Encountered error object was empty');

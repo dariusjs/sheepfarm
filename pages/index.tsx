@@ -1,10 +1,14 @@
 
 export default function Home() {
 
-  return  <div>
-    <p>SheepFarm</p>
-    <li><a href="Sheep">Sheep List</a></li>
-    <li><a href="Equipment">Equipment List</a></li>
-    <li><a href="Perishables">Perishables List</a></li>
+  return <div>    
+  <div>
+    <h2>
+      <p>SheepRP</p>
+    </h2>
+    <div>
+      <img src="./sheep.png"/>
     </div>
+  </div>
+</div>  
 }

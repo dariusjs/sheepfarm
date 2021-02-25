@@ -1,0 +1,273 @@
+{
+  "ModelName": "sheepfarm",
+  "ModelMetadata": {
+    "Author": "Darius",
+    "DateCreated": "Feb 21, 2021, 07:27 PM",
+    "DateLastModified": "Feb 25, 2021, 10:24 PM",
+    "Description": "Sheep Farm",
+    "AWSService": "Amazon DynamoDB",
+    "Version": "2.0"
+  },
+  "DataModel": [
+    {
+      "TableName": "sheepfarm",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "pk",
+          "AttributeType": "S"
+        },
+        "SortKey": {
+          "AttributeName": "sk",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "metadata",
+          "AttributeType": "M"
+        },
+        {
+          "AttributeName": "attributes",
+          "AttributeType": "M"
+        },
+        {
+          "AttributeName": "count",
+          "AttributeType": "N"
+        },
+        {
+          "AttributeName": "type",
+          "AttributeType": "S"
+        }
+      ],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "assets",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "type",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        }
+      ],
+      "TableData": [
+        {
+          "pk": {
+            "S": "id#dolly"
+          },
+          "sk": {
+            "S": "type#sheep"
+          },
+          "metadata": {
+            "M": {
+              "gender": {
+                "S": "female"
+              },
+              "breed": {
+                "S": "merino"
+              }
+            }
+          },
+          "attributes": {
+            "M": {
+              "lastMilked": {
+                "S": "2021-02-15"
+              }
+            }
+          },
+          "type": {
+            "S": "type#sheep"
+          }
+        },
+        {
+          "pk": {
+            "S": "id#barry"
+          },
+          "sk": {
+            "S": "type#sheep"
+          },
+          "metadata": {
+            "M": {
+              "gender": {
+                "S": "male"
+              },
+              "breed": {
+                "S": "angora"
+              }
+            }
+          },
+          "attributes": {
+            "M": {
+              "lastSheared": {
+                "S": "2021-01-13"
+              }
+            }
+          },
+          "type": {
+            "S": "type#sheep"
+          }
+        },
+        {
+          "pk": {
+            "S": "id#tractor1"
+          },
+          "sk": {
+            "S": "type#equipment"
+          },
+          "metadata": {
+            "M": {
+              "sku": {
+                "N": "12345678"
+              },
+              "brand": {
+                "S": "John Deer"
+              }
+            }
+          },
+          "attributes": {
+            "M": {
+              "lastServiced": {
+                "S": "2020-02-01"
+              }
+            }
+          },
+          "type": {
+            "S": "type#equipment"
+          }
+        },
+        {
+          "pk": {
+            "S": "id#tractor2"
+          },
+          "sk": {
+            "S": "type#equipment"
+          },
+          "metadata": {
+            "M": {
+              "sku": {
+                "N": "9999"
+              },
+              "brand": {
+                "S": "Fendt"
+              }
+            }
+          },
+          "attributes": {
+            "M": {
+              "lastServiced": {
+                "S": "2018-05-01"
+              }
+            }
+          },
+          "type": {
+            "S": "type#equipment"
+          }
+        },
+        {
+          "pk": {
+            "S": "id#grainFeed"
+          },
+          "sk": {
+            "S": "type#perishable"
+          },
+          "count": {
+            "N": "10"
+          },
+          "type": {
+            "S": "type#perishable"
+          }
+        },
+        {
+          "pk": {
+            "S": "id#diesel"
+          },
+          "sk": {
+            "S": "type#perishable"
+          },
+          "count": {
+            "N": "1800"
+          },
+          "type": {
+            "S": "type#perishable"
+          }
+        },
+        {
+          "pk": {
+            "S": "id#tractorTyre"
+          },
+          "sk": {
+            "S": "type#sparePart"
+          },
+          "count": {
+            "N": "3"
+          },
+          "type": {
+            "S": "type#sparePart"
+          }
+        },
+        {
+          "pk": {
+            "S": "id#shearer"
+          },
+          "sk": {
+            "S": "type#sparePart"
+          },
+          "count": {
+            "N": "4"
+          },
+          "type": {
+            "S": "type#sparePart"
+          }
+        },
+        {
+          "pk": {
+            "S": "id#dolly"
+          },
+          "sk": {
+            "S": "sheared#20210105"
+          },
+          "count": {
+            "N": "5"
+          },
+          "type": {
+            "S": "type#shearing"
+          }
+        },
+        {
+          "pk": {
+            "S": "id#dolly"
+          },
+          "sk": {
+            "S": "sheared#20220106"
+          },
+          "count": {
+            "N": "7"
+          },
+          "type": {
+            "S": "type#shearing"
+          }
+        },
+        {
+          "pk": {
+            "S": "id#dolly"
+          },
+          "sk": {
+            "S": "sheared#20220306"
+          },
+          "count": {
+            "N": "1"
+          },
+          "type": {
+            "S": "type#shearing"
+          }
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      }
+    }
+  ]
+}
