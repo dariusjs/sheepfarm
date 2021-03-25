@@ -2,9 +2,10 @@
   "name": "custom-server-typescript",
   "version": "1.0.0",
   "scripts": {
-    "dev": "nodemon",
+    "dev": "npx nodemon",
     "build": "next build && tsc --project tsconfig.server.json",
-    "start": "cross-env NODE_ENV=production node dist/index.js"
+    "start": "cross-env NODE_ENV=production node dist/index.js",
+    "dockerDev": "sudo docker run  -p 8000:8000 amazon/dynamodb-local -jar DynamoDBLocal.jar -sharedDb"
   },
   "dependencies": {
     "autoprefixer": "^9",
@@ -12,18 +13,22 @@
     "axios": "^0.21.1",
     "cross-env": "^7.0.2",
     "next": "latest",
-    "react": "^16.13.1",
+    "react": "^17.0.2",
     "react-async": "^10.0.1",
-    "react-dom": "^16.13.1",
+    "react-dom": "^17.0.2",
     "react-promise": "^3.0.2",
     "rxjs": "^6.6.3"
   },
   "devDependencies": {
+    "@tsconfig/node14": "^1.0.0",
     "@types/node": "^12.0.12",
     "@types/react": "^16.9.44",
     "@types/react-dom": "^16.9.8",
+    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/parser": "^4.19.0",
+    "eslint": "^7.22.0",
     "ts-node": "^8.10.2",
-    "typescript": "4.0"
+    "typescript": "^4.2.3"
   },
   "license": "MIT"
 }

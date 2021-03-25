@@ -6,7 +6,7 @@ export async function sheepQuery(){
     "IndexName": "assets",
     "KeyConditionExpression": "#bef90 = :bef90",
     "ExpressionAttributeNames": {"#bef90":"type"},
-    "ExpressionAttributeValues": {":bef90": "type#sheep"}
+    "ExpressionAttributeValues": {":bef90": "sheep"}
   });
   return data
 }
@@ -17,7 +17,7 @@ export async function sheepShearingQuery(){
     "IndexName": "assets",
     "KeyConditionExpression": "#bef90 = :bef90",
     "ExpressionAttributeNames": {"#bef90":"type"},
-    "ExpressionAttributeValues": {":bef90": "type#shearing"}
+    "ExpressionAttributeValues": {":bef90": "shearing"}
   });
   return data
 }
@@ -27,7 +27,7 @@ export async function perishableQuery(){
     "IndexName": "assets",
     "KeyConditionExpression": "#bef90 = :bef90",
     "ExpressionAttributeNames": {"#bef90":"type"},
-    "ExpressionAttributeValues": {":bef90": "type#perishable"}
+    "ExpressionAttributeValues": {":bef90": "perishable"}
   });
   return data
 }
@@ -38,7 +38,7 @@ export async function equipmentQuery(){
     "IndexName": "assets",
     "KeyConditionExpression": "#bef90 = :bef90",
     "ExpressionAttributeNames": {"#bef90":"type"},
-    "ExpressionAttributeValues": {":bef90": "type#equipment"}
+    "ExpressionAttributeValues": {":bef90": "equipment"}
   });
   return data
 }
