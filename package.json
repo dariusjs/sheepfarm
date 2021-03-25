@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "npx nodemon",
+    "devDb": "npx yarn dynamo; npx nodemon",
     "build": "next build && tsc --project tsconfig.server.json",
     "start": "cross-env NODE_ENV=production node dist/index.js",
-    "dockerDev": "sudo docker run  -p 8000:8000 amazon/dynamodb-local -jar DynamoDBLocal.jar -sharedDb"
+    "dynamo": "sudo docker run -d --rm --name dynamoLocal -p 8000:8000 amazon/dynamodb-local -jar DynamoDBLocal.jar -sharedDb; npx ts-node architecture/preload/dbPreLoad.ts",
+    "dynamo:start": "sudo docker run -d --rm --name dynamoLocal -p 8000:8000 amazon/dynamodb-local -jar DynamoDBLocal.jar -sharedDb",
+    "dynamo:load": "npx ts-node architecture/preload/dbPreLoad.ts",
+    "dynamo:stop": "sudo docker stop dynamoLocal"
   },
   "dependencies": {
     "autoprefixer": "^9",
@@ -20,6 +24,7 @@
     "rxjs": "^6.6.3"
   },
   "devDependencies": {
+    "@aws-sdk/client-dynamodb": "^3.9.0",
     "@tsconfig/node14": "^1.0.0",
     "@types/node": "^12.0.12",
     "@types/react": "^16.9.44",
