@@ -3,7 +3,7 @@
   "ModelMetadata": {
     "Author": "Darius",
     "DateCreated": "Feb 21, 2021, 07:27 PM",
-    "DateLastModified": "Feb 25, 2021, 10:24 PM",
+    "DateLastModified": "Mar 25, 2021, 07:47 PM",
     "Description": "Sheep Farm",
     "AWSService": "Amazon DynamoDB",
     "Version": "2.0"
@@ -36,6 +36,10 @@
         },
         {
           "AttributeName": "type",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "name",
           "AttributeType": "S"
         }
       ],
@@ -79,7 +83,10 @@
             }
           },
           "type": {
-            "S": "type#sheep"
+            "S": "sheep"
+          },
+          "name": {
+            "S": "dolly"
           }
         },
         {
@@ -107,7 +114,10 @@
             }
           },
           "type": {
-            "S": "type#sheep"
+            "S": "sheep"
+          },
+          "name": {
+            "S": "barry"
           }
         },
         {
@@ -135,7 +145,10 @@
             }
           },
           "type": {
-            "S": "type#equipment"
+            "S": "equipment"
+          },
+          "name": {
+            "S": "tractor1"
           }
         },
         {
@@ -163,7 +176,10 @@
             }
           },
           "type": {
-            "S": "type#equipment"
+            "S": "equipment"
+          },
+          "name": {
+            "S": "tractor2"
           }
         },
         {
@@ -177,7 +193,10 @@
             "N": "10"
           },
           "type": {
-            "S": "type#perishable"
+            "S": "perishable"
+          },
+          "name": {
+            "S": "grain"
           }
         },
         {
@@ -191,7 +210,10 @@
             "N": "1800"
           },
           "type": {
-            "S": "type#perishable"
+            "S": "perishable"
+          },
+          "name": {
+            "S": "diesel"
           }
         },
         {
@@ -205,7 +227,10 @@
             "N": "3"
           },
           "type": {
-            "S": "type#sparePart"
+            "S": "sparePart"
+          },
+          "name": {
+            "S": "tractorTypre"
           }
         },
         {
@@ -219,7 +244,10 @@
             "N": "4"
           },
           "type": {
-            "S": "type#sparePart"
+            "S": "sparePart"
+          },
+          "name": {
+            "S": "shearer"
           }
         },
         {
@@ -233,7 +261,10 @@
             "N": "5"
           },
           "type": {
-            "S": "type#shearing"
+            "S": "shearing"
+          },
+          "name": {
+            "S": "dolly"
           }
         },
         {
@@ -247,7 +278,10 @@
             "N": "7"
           },
           "type": {
-            "S": "type#shearing"
+            "S": "shearing"
+          },
+          "name": {
+            "S": "dolly"
           }
         },
         {
@@ -261,7 +295,10 @@
             "N": "1"
           },
           "type": {
-            "S": "type#shearing"
+            "S": "shearing"
+          },
+          "name": {
+            "S": "dolly"
           }
         }
       ],

@@ -1,15 +1,32 @@
-import { equipmentQuery } from "server/assetsView"
+import { equipmentQuery } from "../server/assetsView"
+import { sheepFarmItem } from "../types/sheepfarm"
 
-function Equipment({ data }) {
+// interface IProps {
+//   data: Record<string, unknown>;
+// }
+
+function Equipment({ data }: any) {
   return <div>    
   <div>
     <h3>
       List of my Equipment
     </h3>
     <p>
-    <div>{data.Items.map((x) => (
-        <li>{x.sk} {x.pk} Brand: {x.metadata.brand} LastServiced: {x.lastServiced}</li>
-      ))}</div>
+    <table>      
+      <tr>
+        <th>Name</th>
+        <th>Breed</th>
+        <th>Last Serviced</th>
+      </tr>   
+      {data.Items.map((element: sheepFarmItem) => {
+      return (
+        <tr>
+          <th>{element.name}</th>
+          <th>{element.metadata.brand}</th>
+          <th>{element.lastServiced}</th>
+        </tr>
+      )
+    })}</table>
     </p>
   </div>
 </div>

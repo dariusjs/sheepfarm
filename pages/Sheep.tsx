@@ -1,15 +1,26 @@
-import { sheepQuery, sheepShearingQuery } from "server/assetsView"
+import { sheepQuery, sheepShearingQuery } from "../server/assetsView"
 
-function Sheep({ sheep, shearing }) {
+function Sheep({ sheep, shearing }: any) {
   return <div>
       <div>
         <h3>
           Sheep
         </h3>
         <p>
-          <div>{sheep.Items.map((x) => (
-          <li>{x.pk} Breed: {x.metadata.breed} LastMilked: {x.attributes.lastMilked || "never"}</li>
-        ))}</div>
+          <table>
+              <tr>
+                <th>Name</th>
+                <th>Breed</th>
+                <th>Last Milked</th>
+              </tr>
+            {sheep.Items.map((element: any) => (
+          <tr>
+            <th>{element.name}</th> 
+            <th>{element.metadata.breed}</th> 
+            <th>{element.attributes.lastMilked || "never"}</th>
+          </tr>
+          ))}
+        </table>
         </p>
       </div>
       <div>
@@ -17,9 +28,20 @@ function Sheep({ sheep, shearing }) {
           Shearings
         </h3>
         <p>
-          <div>{shearing.Items.map((x) => (
-          <li>{x.pk} {x.sk} {x.count}</li>
-        ))}</div>
+            <table>
+              <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Count (KG)</th>
+              </tr>
+              {shearing.Items.map((element: any) => (
+              <tr>
+                <th>{element.name}</th>
+                <th>{element.date}</th>
+                <th>{element.count}</th>
+              </tr>
+              ))}
+        </table>
         </p>
       </div>
   </div>
@@ -27,7 +49,6 @@ function Sheep({ sheep, shearing }) {
 export async function getServerSideProps() {
   const sheep = await sheepQuery()
   const shearing = await sheepShearingQuery()
-  console.log("cry")
   console.log("data is:", shearing.Items)
   return { props: { sheep, shearing } }
 }
