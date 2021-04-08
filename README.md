@@ -8,6 +8,7 @@ The requirements are:
 * installed docker
 * yarn
 * nodejs runtime
+* configured AWS cli credential set with dummy credentials to upload a sample dataset to dynamo local
 
 ## Required Local DynamoDB
 The project requires a local DynamoDB which can be executed through either:
