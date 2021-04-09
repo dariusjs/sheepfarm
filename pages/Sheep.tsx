@@ -2,8 +2,10 @@ import React from 'react';
 import { useTable } from 'react-table';
 import { sheepQuery, sheepShearingQuery } from '../server/assetsView';
 
+import Table from '../components/Table';
+
 function Sheep({ sheep, shearing }: any) {
-  const sheeple = sheep.Items.map((element: any) => {
+  const allSheep = sheep.Items.map((element: any) => {
     return {
       col1: element.name,
       col2: element.metadata.breed,
@@ -19,7 +21,7 @@ function Sheep({ sheep, shearing }: any) {
     };
   });
 
-  const data = React.useMemo(() => sheeple, []);
+  const data = React.useMemo(() => allSheep, []);
 
   const columns = React.useMemo(
     () => [
@@ -49,6 +51,11 @@ function Sheep({ sheep, shearing }: any) {
     prepareRow
   } = tableInstance;
 
+  return (
+    <div className="App">
+      <Table columns={columns} data={data} />
+    </div>
+  );
   return (
     <div>
       <div>
